@@ -16,7 +16,7 @@ docker compose up --build
 ```bash
 docker compose down
 ```
-
+### POSTMAN COLLECTION IS PRESENT IN THE REPO ITSELF
 For Testing using Postman (Some Instructions)
 * For Testing Sign Up and Login API - you do not require any authentication but any other apis require Token Authentication which you get in Response when you login
 * For Testing Authenticated APIs include token in headers in this Format (also included in Postman Collection)
