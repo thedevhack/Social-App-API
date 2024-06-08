@@ -1,0 +1,213 @@
+{
+	"info": {
+		"_postman_id": "e40024d8-1450-4779-bf42-294f0b2b8485",
+		"name": "Social App API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "35960501"
+	},
+	"item": [
+		{
+			"name": "SignUp User",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\":\"Abc7d121275@gmail.com\",\r\n    \"password\":\"abcd1234\",\r\n    \"name\":\"Dharmesh\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:8000/users/signup/",
+				"description": "This API endpoint facilitates the registration process for new users by collecting essential information required for account creation.\n\n**Json Body**\n\n- **email** (required): The email address of the user. Must be unique and valid.\n- **password** (required): The password chosen by the user for authentication.\n- **name** (optional): The name of the user. Providing a name is optional."
+			},
+			"response": []
+		},
+		{
+			"name": "Login User",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\":\"abC7d12125@gmail.com\",\r\n    \"password\":\"abcd1234\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:8000/users/login/",
+				"description": "This API endpoint facilitates user authentication by allowing registered users to log in with their credentials.\n\n**Json Body**\n\n**email (required): The email address associated with the user's account.****password (required): The password for authentication.**"
+			},
+			"response": []
+		},
+		{
+			"name": "Search Users",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Token 032e595ee359adc0935ebad6accc09855a96fa85",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8000/api/users/?q=admin@gmail.com",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"users",
+						""
+					],
+					"query": [
+						{
+							"key": "q",
+							"value": "admin@gmail.com"
+						}
+					]
+				},
+				"description": "This API endpoint allows searching for users based on their name or email address, utilizing a query parameter `q`, and requires a valid authentication token obtained from the login response.\n\n**Query Params**\n\n**q(required): The search query. Accepts either a name or an email address.**\n\n**Headers**\n\n**Authorization :token (required): Authentication token obtained from the login response.**"
+			},
+			"response": []
+		},
+		{
+			"name": "Send Friend Request",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Token e6500a5825e76fed83e58d7237a4aed9562695d0",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"receiver\":9,\r\n    \"sender\":5\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:8000/api/send_request/",
+				"description": "This API endpoint enables the search for users based on their name or email address, utilizing the query parameter `q`. Successful execution of this request mandates a valid authentication token, acquired from the login response.\n\n**Json Body**\n\n**sender -** user id who is sending the friend request.\n\nreceiver - user id who is receiving the friend request.\n\n**Headers**\n\n**Authorization :token (required): Authentication token obtained from the login response.**"
+			},
+			"response": []
+		},
+		{
+			"name": "Accept Friend Request",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Token e6500a5825e76fed83e58d7237a4aed9562695d0",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"receiver\":9,\r\n    \"sender\":5,\r\n    \"type_request\":\"Accept\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:8000/api/update_friend_request/",
+				"description": "This API endpoint facilitates the update of the friend request status to \"accepted\" using the sender ID, receiver ID, and specifying the request type as \"Accept\". Successful execution of this request mandates a valid authentication token, acquired from the login response.\n\n**Json Body**\n\n**sender -** user id who is sending the friend request.\n\n**receiver** - user id who is receiving the friend request.\n\n**Headers**\n\n**Authorization :token (required): Authentication token obtained from the login response.**"
+			},
+			"response": []
+		},
+		{
+			"name": "Reject Friend Request",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Token e6500a5825e76fed83e58d7237a4aed9562695d0",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"receiver\":3,\r\n    \"sender\":9,\r\n    \"type_request\":\"Reject\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:8000/api/send_request/",
+				"description": "This API endpoint facilitates the update of the friend request status to \"accepted\" using the sender ID, receiver ID, and specifying the request type as \"Reject\". Successful execution of this request mandates a valid authentication token, acquired from the login response.\n\n**Json Body**\n\n**sender -** user id who is sending the friend request.\n\n**receiver** - user id who is receiving the friend request.\n\n**Headers**\n\n**Authorization :token (required): Authentication token obtained from the login response.**"
+			},
+			"response": []
+		},
+		{
+			"name": "List All Accepted Friends",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Token e6500a5825e76fed83e58d7237a4aed9562695d0",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"sender\":\"50\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:8000/api/list_all_accepted_friends/",
+				"description": "This API endpoint facilitates the list of all friends who accepted our friend requests using the sender ID,. Successful execution of this request mandates a valid authentication token, acquired from the login response.\n\n**Json Body**\n\n**sender -** user id whose list of friends we want to see.\n\n**Headers**\n\n**Authorization :token (required): Authentication token obtained from the login response.**"
+			},
+			"response": []
+		},
+		{
+			"name": "List All Pending Requests",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Token e6500a5825e76fed83e58d7237a4aed9562695d0",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"receiver\":\"5\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:8000/api/list_all_pending_friends/",
+				"description": "This API endpoint enables the retrieval of a list containing all friend requests sent to the authenticated user that have not yet been accepted or rejected. Successful execution of this request requires a valid authentication token obtained from the login response.  \n  \n\n**Json Body**\n\n**receiver-** user id whose list of pending friend request we want to see.\n\n**Headers**\n\n**Authorization :token (required): Authentication token obtained from the login response.**"
+			},
+			"response": []
+		}
+	]
+}
