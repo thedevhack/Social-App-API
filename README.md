@@ -1,5 +1,5 @@
 ### Steps to Run using Docker
-1. Git clone using this command (must have git installed in your PC)
+1. Git clone using this command (must have git installed in your PC) and it will clone in current directory
 ```bash
 git clone https://github.com/thedevhack/Social-App-API.git .
 ```
@@ -8,9 +8,18 @@ git clone https://github.com/thedevhack/Social-App-API.git .
 ```bash
 docker compose up --build
 ```
-3. Now you can check your apis on [Sign up URL](https://localhost:8000/users/signup/)
+3. 💯 Now you can check your apis on [Sign up URL](https://localhost:8000/users/signup/)
 
-4. You can shutdown the docker fully using this command
+> Please Use localhost:8000 for testing
+
+5. You can shutdown the docker fully using this command
 ```bash
 docker compose down
+```
+
+For Testing using Postman (Some Instructions)
+* For Testing Sign Up and Login API - you do not require any authentication but any other apis require Token Authentication which you get in Response when you login
+* For Testing Authenticated APIs include token in headers in this Format (also included in Postman Collection)
+```json
+{"Authorization": "token {your_login_token}"}
 ```
